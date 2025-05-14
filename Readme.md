@@ -14,7 +14,7 @@ Follow the steps below to set up and run the development environment for this pr
 3. **Build the Project:**
     To build the project, execute:
     ```bash
-    make all
+    make build
     ```
 
 4. **Start Development Mode:**
