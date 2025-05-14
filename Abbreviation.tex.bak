@@ -1,0 +1,81 @@
+\newpage
+%\begin{acronym}
+
+\thispagestyle{plain}
+%\phantomsection
+%\label{acm}
+
+\noindent\textbf{\huge List of Acronyms}
+\vspace{0.2cm}
+\setlength{\tabcolsep}{4pt}
+\vspace{-1em}
+\addtolength\tabcolsep{.01pt}
+\renewcommand{\arraystretch}{1.325}
+\setlength{\LTcapwidth}{12in}
+
+%\begin{table}[!h]
+   %\centering
+   \begin{longtable}{p{5cm} p{9cm}}
+   \hline
+   \textbf{Abbreviation}  & \textbf{Full form}\\
+   \hline
+   \endfirsthead
+    \hline
+   \textbf{Abbreviation}  & \textbf{Full form}\\
+   \hline
+    \endhead
+    
+    \hline
+    \endfoot
+    \hline
+    \endlastfoot     
+BDH     & Bilinear Diffie-Hellman (BDH) \\
+CA      & Certificate Authority \\
+CCA & Chosen Ciphertext Attack \\ 
+CDH     & Computational Diffie-Hellman \\
+CL-PKC  & Certificateless Public Key Cryptography\\
+CPA & Chosen Plaintext Attack \\
+CS      & Cloud Server\\
+CSP & Cloud Service Provider\\
+DBDH    & Decisional Bilinear Diffie-Hellman \\
+DBDHI & Decisional Bilinear Diffie-Hellman Inversion\\
+DC      & Data Consumer\\
+DLIN & Decision Linear \\
+DO & Data Owner\\
+DPOS & Delegated Proof of Stake\\
+ECC & Elliptic Curve Cryptography \\
+ECPA & Elliptic Curve Point Addition\\
+ECPD & Elliptic Curve Point Doubling\\
+ECPS & Elliptic Curve Point Subtraction\\
+ECPSPM & Elliptic Curve Scalar Point Multiplication\\
+EMR & Electronic Medical Record\\
+HDH & Hash Diffie-Hellman \\
+IBC & Identity-Based Cryptography\\
+IBE & Identity-Based Encryption\\
+IIoT & Industrial-Internet-of-Things\\
+ITU & International Telecommunication Union\\
+KGA & Keyword Guessing Attack\\
+KGC & Key Generation Center\\
+ME & Modular Exponentiation \\
+MTP & Map-to-Point\\
+%PBC & Pairing-Based Cryptography\\
+PBC & Pairing-Based Cryptography\\
+PEKS & Public key Encryption with Keyword Search\\
+PKC & Public Key Cryptography\\
+PKE & Public Key Encryption\\
+PKG & Private Key Generator\\
+PKI & Public Key Infrastructure\\
+PMR & Paper-based Medical Record\\
+PoC & Proof-of-Conformance\\
+PoS & Proof-of-Stake\\
+PoW & Proof-of-Work \\
+QRP & Quadratic Residual Problem\\
+ROM & Random Oracle Model\\
+RSA & Rivest-Shamir-Adleman\\
+SE  & Searchable Encryption \\
+SPE & Searchable Public key Encryption\\
+SSE & Symmetric Searchable Encryption\\
+XDH & External Diffie-Hellman \\
+\hline
+\end{longtable}
+%\end{table}

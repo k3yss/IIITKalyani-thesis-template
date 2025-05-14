@@ -1,0 +1,15 @@
+%\begin{flushleft}
+%{\Large \textsc{\textbf{Publications}}}
+%\end{flushleft}
+\chapter*{Publications}
+%\rule{\textwidth}{0.4pt}\par % Thick horizontal line
+This thesis is based on some of the following publications of the author.\\
+
+{\noindent \Large \textbf{Journal Publications}}
+\begin{enumerate}
+\item \textbf{S. Ghosh}, S. H. Islam, A. Bisht, and A. K. Das, ``Provably secure public key encryption with keyword search for data outsourcing in cloud environments", \textbf{Journal of Systems Architecture [SCIE, Q1 Journal, H-Index: 53]}, Vol. 139, Article ID: 102876, June 2023. Impact Factor: 5.836]
+
+\item \textbf{S. Ghosh}, S. H. Islam, A. V. Vasilakos, ``Private Blockchain-assisted Certificateless Public Key Encryption with Multi-keyword Search for Fog-based IIoT Environments'', \textbf{IEEE IoT Journal [SCIE], H-Index: 149, Q1 Journal}, Vol. xx, pp. xx, 2024. IF: 10.60. DOI:10.1109/JIOT.2024.3415676.
+
+\item \textbf{S. Ghosh}, S. H. Islam, A. V. Vasilakos, ``BCT-IMDS: Identity-based Medical Data Sharing Framework using Cloud-assisted Blockchain'', \textbf{IEEE Transactions on Network Science and Engineering [SCIE, H-Index: 49, Q1 Journal]}. IF: 6.60. \textbf{(Major Revision Submitted)}.
+\end{enumerate}

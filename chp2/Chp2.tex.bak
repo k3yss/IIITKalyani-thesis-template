@@ -1,0 +1,248 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Chapter 2
+%%Indian Institute of Information Technology Kalyani
+%% All rights are reserved.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+\chapter[Literature Review]{Literature Review}
+\label{chp2}
+%\setcounter{minitocdepth}{1}
+%\minitoc
+\section{Introduction}
+\label{chp2.1}
+In this chapter, we provide the literature review on (i) PKI-based PEKS scheme, (ii) Blockchain-assisted and IBE-based PEKS scheme (BCT-IMDS) for sharing medical data, and (iii) Blockchain-assisted annd CL-PKC-based PEKS with multi-keyword search (BCT-CL-PEMKS) for IIoT environment. In the PKI-based PEKS scheme, we propose a new PEKS scheme to outsource the data securely to a cloud server over the Internet. This scheme can prevent KGAs by enhancing trapdoor security with a designated tester. The BCT-IMDS scheme is an IBE-based PEKS scheme that supports multiuser search. This scheme used private and consortium blockchains, and the PoC consensus algorithm was considered for block mining. In the BCT-IMDS scheme, the data consumers are not predefined, i.e., any user can access the data. After mutual authentication, the data owner creates the keyword search trapdoor for the data consumer; the data owner also creates an identity search trapdoor using the registration token of a patient with the hospital and sends both to the consortium blockchain. The BCT-CL-PEMKS is a CL-PKC based PEKS scheme. It is based on fog computing and uses a private blockchain that achieves multi-keyword search and forwards security. The proposed BCT-CL-PEMKS scheme is suitable for IIoT environments 
+
+\section{Literature Survey on PKI-based PEKS Scheme}
+\label{chp2.2}
+ \label{sec:2.1} Boneh et al. \cite{boneh2004public} first introduced the concept of a bilinear pairing-based PEKS scheme. It is secure in the Random Oracle Model (ROM) based on the hardness assumption of the Bilinear Diffie-Hellman (BDH) problem. Moreover, they have shown that the scheme is secure against chosen keyword attacks in ROM. Since then, various PEKS schemes and their variants have been proposed. We can classify these works into the following types: (i) PEKS for multi-user access control \cite{tang2012public, ma2014efficient, sun2014protecting}, (ii) PEKS for trapdoor privacy \cite{su2017online, rhee2009improved, arriaga2014trapdoor}, (iii) PEKS for flexible keyword search \cite{golle2004secure, lv2014expressive,park2004public}, and (iv) PEKS for fuzzy keyword search \cite{cao2013privacy, li2014enabling}. The concept of SE was first introduced in 2000 by Song et al. \cite{song2000practical} using symmetric key encryption. Later, Golle et al. \cite{golle2004secure} discussed the first SE scheme using conjunctive keyword and also pointed out the limitation of the single-user model associated with Song et al.'s scheme \cite{song2000practical}. However, the search time of Golle et al.'s scheme is linear and limited to a small keyword size. Cash et al. \cite{cash2013highly} proposed the first SE scheme, which is nonlinear, supports boolean queries and can be applied to large data sizes. However, because the schemes mentioned above are based on symmetric key cryptography, they all have key exchange issues.
+
+ In 2008, Baek et al. \cite{baek2008public} designed a PEKS scheme to eliminate the use of a secure channel in Boneh et al.'s scheme \cite{boneh2004public}. In Bake et al.'s scheme, only a particular server can verify whether the keyword of the trapdoor is similar to any stored keyword. Nevertheless, later, Rahee et al. \cite{rhee2009improved} showed that the security model in \cite{baek2008public} is inefficient, and the capability of the adversary is limited. Therefore, Rahee et al. \cite{rhee2009improved} redesigned the security model, and proposed the concept of trapdoor indistinguishability. Also, they have shown that the scheme in \cite{rhee2009improved} is secure from Offline KGA (OKGA). Zaho et al. \cite{zhao2012new} proposed a secure method against trapdoor indistinguishability in the Chosen Plaintext Attack (CPA) model. Hu et al. \cite{hu2011secure, hu2012enhanced} improved the scheme in \cite{baek2008public}. Hu et al. showed that the scheme in \cite{baek2008public} is not secure against the OKGA if the server is malicious. Unfortunately, Ni et al. \cite{ni2012cryptanalysis} showed that schemes in \cite{hu2011secure, hu2012enhanced} are not secure against OKGA if the server is malicious. In 2017, Huang et al. \cite{huang2017efficient} proposed a secure PEKS scheme against OKGA. Nevertheless, the trapdoor is fixed in this scheme, i.e., the scheme always creates the same trapdoor for the same keyword. As the trapdoor is fixed, an attacker may get some information regarding the encryption pattern. Also, the scheme does not offer ciphertext indistinguishability in the CPA model. In \cite{liu2014search}, the authors show that the schemes in \cite{boneh2004public,baek2008public} may reveal the keywords due to the leakage of encryption patterns. Other than the keyword search, some new techniques have been discussed in the public key setting, like verifiable keyword search \cite{jiang2017enabling, miao2018enabling, liu2018verifiable}, decryptable searchable encryption \cite{fuhr2007decryptable} and proxy re-encryption with keyword search \cite{shao2010proxy,chen2016restricted}. In \cite{zhou2021searchable},  the authors proposed a PEKS scheme with cryptographic reverse firewalls (SPKE-CRF). They used the JPBC library to implement the scheme and showed that the scheme could resist the chosen keyword attack. In \cite{chen2020parallel}, the authors proposed a PEKS technique with parallelism and forward privacy, namely the parallel and forward private searchable public key encryption (PFP-SPE). They have shown that their proposed scheme achieves parallelism and forward privacy, but the storage cost is slightly higher than other schemes. Table. \ref{PKIcomp} compares different existing PEKS schemes.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[!htb]
+\begin{center}
+\caption{Comparison of existing PEKS scheme}
+\vspace{0.5cm}
+\label{PKIcomp}
+\scalebox{0.84}{
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+\textbf{Scheme}                 &  \textbf{P1}    &  \textbf{P2} & \textbf{P3}  & \textbf{P4}  & \textbf{P5}  & \textbf{P6}  & \textbf{P7}   & \textbf{P8} &  \textbf{P9} \\
+\hline
+Boneh et al.~\cite{boneh2004public} & PKI  &  BHD            &       Bilinear paring,       & Yes          & No           & No           & No            & No & ROM \\
+				             &      &              &  hashing     &      &      &          &      &         &\\
+				\hline
+				Lu and Li \cite{lu2019efficient} & PKI  &  Inv-DBDH, HDH  &  Bilinear paring,   &  Yes  &  Yes  &  Yes  & No    &  Yes  & ST\\
+				  &      &              &  hashing     &      &      &          &      &         &\\
+				\hline
+				Huang and Li~\cite{huang2017efficient} &  PKI  &    DBDH, DLIN,        &  Bilinear paring,                & Yes          & Yes          & Yes          & No            & Yes & ROM  \\
+				&     &      mDLIN  &      hashing        &            &                &           &       &  & \\ 
+				\hline
+Rhee et al.~\cite{rhee2009improved}&PKI  &      BDH, BDHI          &  Bilinear paring,            & Yes          & Yes          & Yes          & Yes           & No  &  ROM \\
+				& & & Hashing & & & & & &  \\
+				\hline
+				Hu and Liu~\cite{hu2011secure}  &   PKI  &    BDH, BDHI           &    Bilinear paring,            & Yes          & Yes          & Yes          & Yes           & No & ROM  \\
+				& & & hashing & & & & & &\\
+				\hline
+			
+				Rhee et al.~\cite{rhee2010trapdoor}  & PKI &   BDH, BDHI          &   Bilinear paring,          & Yes          & Yes          & Yes          & Yes           & No & ROM \\
+					& & & hashing & & & & & &   \\
+				\hline
+				Guo et al. \cite{guo2015efficient} &  PKI  &  QDBDH, DBDH,           &     Bilinear paring,         & Yes         & Yes          & Yes          & Yes           & No &  ST \\
+				                & & HDH & hashing & & & & & & \\
+				\hline
+				Wu et al. \cite{wu2016efficient}  & PKI   &  DDDH, DCDH,         &     Bilinear paring,           & Yes          & Yes          & Yes          & No           & No & ST  \\
+				& &Inv-CDH & hashing & & & & & &   \\
+				\hline
+			
+				Zhang and Lin \cite{zhang2018towards} & PKI  &  q-BDHI  &  Bilinear paring,   &  Yes   &   Yes &  Yes   &   Yes  &  Yes  & Informal\\
+				 &      &              &  hashing     &      &      &          &      &         &\\
+				\hline
+			    Zhang et al. \cite{8737775} & PKI  & CDH   &  Bilinear paring,   &  Yes   &  Yes  &  Yes   &  No   & Yes   & ROM \\
+			     &      &              &  hashing     &      &      &          &      &         &\\
+				\hline
+				\textbf{Proposed}         & PKI   &    BDH, DBDH,           & Bilinear paring,           & Yes          & Yes          & Yes          & Yes           & Yes & ROM  \\
+			              &      	& HDH        &     hashing            &                   &            &          &          &  &  \\
+				\hline
+		\end{tabular}}
+	\end{center}
+\begin{tablenotes}
+\item \textbf{P1}: Cryptosystem used\hspace{.1cm} \textbf{P2}: Hardness assumption \hspace{.1cm}: \textbf{P3}: Mathematical tool \hspace{.1cm} \textbf{P4}: Provides ciphertext indistinguishability;\hspace{.1cm}
+\textbf{P5}: Provides trapdoor indistinguishability;\hspace{.1cm} \textbf{P6}: Secure channel free;\hspace{.1cm} \textbf{P7}: Designated tester;\hspace{.1cm} \textbf{P8}: Prevent KGA \hspace{.1cm} \textbf{P9}: Provable security analysis; \hspace{.1cm} \textbf{ROM}: Random Oracle Model; \hspace{.1cm} \textbf{ST}: Standard Model
+	\end{tablenotes}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Literature Survey on BCT-IMDS Scheme}
+\label{chp2.3}
+ \label{sec:2.2} A cloud-based EMR sharing system with fuzzy keyword search was proposed in 2016 \cite{liu2016cloud}. Their search methodology makes it easy for a doctor (or other users) to find EMRs whose symptoms include the requested keywords. The attribute-based algorithm is also used to authenticate the users based on their attributes. An attribute-based, fine-grained authorization mechanism for a relational database was proposed by Guo et al. \cite{guo2016fine}. Yang et al. \cite{8056954}  created a dynamic SSE method for EMR data that allows forward privacy and delegated verifiability. The authors made monitoring patients from far away possible using cloud storage and the Internet-of-Things (IoT). In 2017, Li et al. \cite{li2017searchable} presented a blockchain-based SSE system in which blockchain is used to store user data on a pay-per-use basis. Each user in the decentralized system is treated equally, and by submitting a transaction, each user asks the other users to keep their data. In exchange for storing these data in a public blockchain and adding them as a block, a user, known as a ``worker" or ``miner", receives the rewards. This system, however, only allows for single-keyword searches.
+
+\par All the work described above is based on a symmetric key encryption algorithm. The literature describes PEKS-based medical data sharing \cite{guo2015efficient, zhang2016privacy}. But the cryptanalysis given in \cite{lu2019efficient} shows that the techniques in \cite{guo2015efficient, zhang2016privacy} can not resist keyword-guessing attacks (KGAs). Because of the blockchain's immutability and inherent autonomy, which are advantages in data management, there has been a surge in interest in blockchain for e-Health security and privacy in recent years. Xia et al. \cite{xia2017bbds} propose a blockchain-based system for exchanging medical data that addresses access control issues associated with sensitive data stored in a cloud server. The system is built on a permissioned blockchain that only allows authenticated users to use it. Furthermore, in their other work \cite{7990130}, the authors use smart contracts and an access control mechanism to effectively track the behavior of the data and revoke access to offending entities upon detection of a violation of permissions on the data. These provide data provenance, auditing, and secured data trails on medical data. Finally, Zhang and Lin \cite{zhang2018towards} proposed a blockchain-based PEKS for medical data sharing. But only the doctor can access the patient's data in this work.
+
+\par With an emphasis on
+blockchain-based solutions, Jin et al. \cite{8713993} presented a
+detailed survey on the most advanced schemes for medical
+data sharing securely and privately over the previous decades. They
+categorized them into permission and permissionless blockchain-based
+techniques, comparing and contrasting their benefits and drawbacks.
+Additionally, they talked about possible study areas for
+blockchain-based medical data sharing. Because of the
+blockchain's immutability and inherent autonomy, which are
+advantages in data management, there has been a surge in interest in
+blockchain for e-health security and privacy in recent years
+\cite{mayer2020electronic}. The works \cite{xia2017medshare,7990130}
+managed authorization permissions through interoperability,
+recording EMR behaviors on the blockchain. They rely heavily on
+real-time interactions. That is, all related entities must always be
+online.
+
+Wang et al. \cite{9547814} proposed a constant-size attribute-based
+encryption (ABE) method in which the blockchain's search results
+contain an embedded access policy. Additionally, they provide an
+effective method that permits authorized users to search encrypted
+EMRs using multiple keywords in boolean expressions. Xia et al.
+\cite{xia2017bbds} propose a blockchain-based system for exchanging
+medical data that addresses access control issues associated with
+sensitive data stored in a cloud server. The system is built on a
+permissioned blockchain that only allows authenticated users to use
+it. Furthermore, in their other work \cite{7990130}, the authors use
+smart contracts and an access control mechanism to effectively track
+the behavior of the data and revoke access to offending entities
+upon detection of a violation of permissions on the data. These
+provide data provenance, auditing, and secured data trails on
+medical data. Zhang and Lin \cite{zhang2018towards} proposed a
+blockchain-based PEKS for medical data sharing. However, only the
+doctor can access the patient's data in this scheme.
+
+\par Zhang et al. \cite{8737775} presented a blockchain-assisted PEKS scheme in preventing KGAs for cloud storage. To avoid the single-point-of-failure issue, they deployed numerous key servers to aid in the encryption of keywords. Key aggregate searchable encryption (KASE) is described in the work \cite{9881907} and allows owners to manage and share their data rights without a trusted third party (TTP) and fixes the key management issues. They suggest a secure data sharing system based on KASE in a fog-enabled Internet of Things environment using blockchain. However, this scheme is not secure channel-free, and the author has not provided a provable security analysis. The most recent blockchain applications in the fields of medicine and healthcare are discussed by Kuo et al. \cite{kuo2017blockchain}. They also discuss possible problems and offer solutions for using blockchain technology in the biomedical and healthcare fields. A certificateless encryption (CLE) that is resistant to KGA and chosen keyword attacks (CKA) under the standard model was proposed by Ma et al. \cite{ma2020certificateless}. The work \cite{9662435, 10158344} proposed a blockchain-based e-healthcare system, but these two works are not PEKS-based. Table \ref{IBCtabcomp} compares different PEKS-based medical data sharing schemes.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table*}[!htb]
+\begin{center}
+\caption{Comparison of different PEKS-based medical data sharing schemes}
+\vspace{0.5cm}
+\label{IBCtabcomp}
+\centering
+\scalebox{0.70}{
+		\centering
+		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|}
+			\hline
+			\textbf{Scheme} & \textbf{P1} & \textbf{P2}   & \textbf{P3}  &  \textbf{P6}  & \textbf{P7} &\textbf{P8}  & \textbf{P9} & \textbf{P10}  &  \textbf{P11} & \textbf{P12} & \textbf{P13}   \\
+			\hline
+			%Zhang et al.\cite{8964326} & ABE & DDH, SXDH  & Bilinear pairing,  & Not used  & Not given   & Yes   &  No & No  &  No  &  No   & Yes\\
+			% &   &    &  hashing  &     &     &     &     &     &   & & \\
+			%\hline
+			Guo et al. \cite{guo2015efficient} & PKI  & QDBDH, DBDH,& Bilinear pairing,  & Yes & Yes  & No  & ST & Not used & No & No & No
+			\\
+			&   & HDH  & hashing  &   &   &   &  &  &  & & \\
+			\hline
+			Wu et al. \cite{wu2016efficient}  & PKI & DDDH, DCDH,  & Bilinear pairing, & Yes  & No & No & ST & Not used & No & No & No\\
+			&  & Inv-CDH  & hashing  &   &  &  &  & &  & & \\
+			
+			\hline
+			Lu and Li \cite{lu2019efficient} & PKI  & Inv-DBDH, HDH   & Bilinear pairing, & Yes  & No & Yes & ST  & Not used & No & No & No \\
+			&   &    & hashing &  &  &  & &  & & &  \\
+			\hline
+			Zhang and Lin \cite{zhang2018towards}  & PKI & q-BDHI  & Bilinear pairing, & Yes & Yes  & Yes  & Informal & JUICE & Yes & No & No \\
+			&  &   & hashing &  &  &  &  &  & & &  \\
+			\hline
+			Zhang et al. \cite{8737775}     & PKI  & CDH  & Bilinear pairing, & Yes & No & Yes & ROM & Not used & Yes   & No   & No  \\
+			&  &   & hashing &  &  &  &  &  &     &   &  \\
+			\hline
+			Oh et al. \cite{9881907}     & PKI  & Not used   & Bilinear paring,  & No  & Yes  & Yes & Informal & AVISPA &  Yes  & No & No    \\
+			& & & hashing &   &   &  & & & &  & \\
+			\hline
+			
+			Ma et al.\cite{ma2020certificateless}  & CLC & DBDH, q-ABDHE   & Bilinear paring,  & Yes & Yes & Yes & ST & Not used & No & No   & No    \\
+			&    &   & hashing  &   &   &   &   &     &   &    & \\
+			\hline
+			BCT-IMDS & IBC & BDH, DBDH & Bilinear paring, & Yes & Yes & Yes & ROM & Scyther & Yes  & Yes & Yes \\
+			&  &    & hashing, ECC    &   &    &   &  &   &  &  &   \\
+			\hline
+	\end{tabular}}
+\end{center}
+\begin{tablenotes} 
+\item \textbf{P10}:~Simulation tools used; \hspace{.1cm}\textbf{P11}:~Blockchain-based;\hspace{.1cm}\textbf{P12}:~Multiuser Search; \hspace{.1cm}\textbf{P13}:~Data consumer is not preselected.
+\end{tablenotes}
+\end{table*}
+
+\section{Literature Survey on BCT-CL-PEMKS Scheme}
+\label{chp2.4}
+ \label{sec:2.3}In \cite{al2003certificateless}, Al-Riyami and Paterson introduced the concept of CL-PKC in 2003, a KGC/PKG that creates an identity-based partial-private key based on the user's identity. The user generates the full private key by combining the identity-based partial-private key with a secret key of their choice, guaranteeing that KGC/PKG cannot access the full private key. This approach resolves the IBC's key escrow issue without requiring digital certificates for PKG. Seo et al. \cite{6574849} developed a mediated CL-PKC without bilinear pairing in 2013   to address sensitive data sharing concerns in public clouds. Girault's Level-2 security has been attained in this scheme, where the cloud functions as the key generation center (KGC). He et al.\cite{8100946} devised a Certificateless PEKS (CL-PEKS) scheme for the IIoT system that utilized pairings to thwart inside KGA. For the IIoT environment, Ma et al. \cite{7927473} introduced an effective CL-PKES incorporating multiple keyword searches. This scheme encrypts a keyword before transmission to a third-party cloud storage. This work attains Level-2 security and is based on the BDH assumption. But Zhang et al. \cite {8964282} showed that the scheme in \cite{7927473} does not satisfy trapdoor indistinguishability. CL-PEKS strategy for IIoT was also provided in the schemes \cite{9541032} where the concept of edge computing is used, and it achieved Level-3 security. Moreover, this scheme permits revocation by the user, and the search and decryption rights of the identified identity are revoked when a user is linked to malicious activity. A CL-PKC was developed by Wang et al. \cite{wang2016certificateless} to fend off the selective opening attack. Under the Computational Diffie-Hellman (CDH) assumption, it is Girault's Level-2 secure. Afterward, Zhou and Yang \cite{zhou2017continuous} developed a pairing-free CL-PKC that meets Girault's Level-3 security requirements under the decision-DH (DDH) assumption and prevents private key leakage by updating the key periodically. According to Lu et al., \cite{8847411}, an adversary can impersonate the sender to encrypt the keyword and activate IKGA. They suggested a multi-recipient CL-PEKS technique that protects privacy. Recently, a pairing-free CL-PEKS scheme that is secure and effective was proposed in \cite{9866679}. A pairing-free CL-PKC was developed by Lin et al. \cite{lin2018efficient}, in which the security is provided by the ROM. Following that, Qu et al. \cite{qu2018certificateless} developed a novel CL-PKC utilizing the RoM in which a cloud server operated by a third party verifies whether or not two distinct ciphertexts are associated with the same message. Table \ref{CLtabcomp} compares different CL-PKC based data sharing schemes.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table*}[!htbp]
+\begin{center}
+\caption{Comparison of different CL-PKC-based data sharing schemes}
+\vspace{0.5cm}
+\label{CLtabcomp}
+\centering
+\scalebox{0.79}{
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+\textbf{Scheme} & \textbf{P1} & \textbf{P2}   & \textbf{P8}  & \textbf{P9}   & \textbf{P11}  & \textbf{P14}  & \textbf{P15} & \textbf{P16} & \textbf{P17}  & \textbf{P18} \\
+\hline
+Ma et al. \cite{7927473}& CL-PKC  & BDH & No  & ROM  & No & No  & Yes  & No &   No    &   Level-2    \\
+\hline
+Karati et al. \cite{9541032}&  CL-PKC & DDHI, BSDH  & Yes & ST  & No & Yes  & Yes & Yes(Edge) & No  & Level-3\\
+\hline
+Seo et al. \cite{6574849} &  CL-PKC  & CDH  & -- & ROM   & No & Yes & No  & No & No  & Level-2\\
+\hline
+He et al. \cite{8100946}&  CL-PKC & BDH  & Yes  & ROM & No  & No  & Yes & No  & No & Level-2 \\
+\hline
+Wang et al. \cite{wang2016certificateless}  &  CL-PKC  & CDH  & -- & ST & No & No & No & No & No & Level-2 \\
+\hline
+				Zhou and Yang \cite{zhou2017continuous} &  CL-PKC  & DDH   & --  & ROM & No  & No & No  & No & No  & Level-3  \\
+				\hline
+				Lu et al. \cite{8847411} &  CL-PKC & BDH & Yes & ROM & No & No & Yes & No  & No   & Level-2 \\
+				\hline
+				Lin et al. \cite{lin2018efficient} &  CL-PKC & DDH & -- & ROM & No & Yes & No & No  & No  & Level-2 \\
+				\hline
+				Qu et al. \cite{qu2018certificateless}   &  CL-PKC  & BDH  & --  & ROM  &   No      & Yes   & No & No & No & Level-2\\
+				\hline
+				BCT-SL-PEMKS &  CL-PKC   & XDH, DLIN  & Yes  &  ROM & Yes    & Yes  & Yes  &   Yes(Fog)  & Yes & Level-3 \\
+				\hline
+		\end{tabular}}
+	\end{center}
+\begin{tablenotes} 
+\item \textbf{P14}:~Data sharing methods used; \hspace{.1cm}\textbf{P15}:~Keyword search method used;\hspace{.1cm}\textbf{P16}:~Fog-/Edge-computing paradigm used;\hspace{.1cm} \textbf{P17}:~Support multi-keyword search;\hspace{.1cm}\textbf{P18}:~Support Girault's security/trust level;\hspace{.1cm} ``--": Does not support keyword search.
+\end{tablenotes}
+\end{table*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Security Attributes}
+\label{chp2.5}
+\subsection{Provable Security}
+ Provable security is a concept in cryptography that refers to the ability to mathematically confirm that a cryptographic protocol, algorithm, or system meets a specific security requirement. These elements include confidentiality, integrity, authenticity, and attack resistance, such as KGAs in a PEKS scheme. The provable/computational security analysis of a cryptographic algorithm estimates the computational effort, i.e., the breaching probability and time, of an intruder/adversary who is trying to breach the security of the algorithm.
+
+\subsection{Keyword Guessing Attack}
+ One major disadvantage of the PEKS system is its vulnerability to KGA. A KGA enables the attacker to guess the correct keyword, which is encrypted in a searchable ciphertext and trapdoor.
+
+\subsection{Secure-Channel Free}
+ Secure channel free communication is a technique to securely send information between users without relaying on a pre-existing secure channel. In the PEKS scheme, the data user creates a trapdoor for keyword search and sends it to the cloud server. In some PEKS schemes, a secure channel is required to send the trapdoor to the cloud server. However, creating a secure channel is not feasible in reality.
+
+\subsection{Trapdoor Indistinguishability}
+ Trapdoor indistinguishability is a cryptographic property applicable to PEKS schemes. It ensures that an adversary, given two trapdoors associated with two different keywords, cannot determine which keyword corresponds to which trapdoor. In other words, the trapdoors are computationally indistinguishable despite being associated with different keywords. We define the advantages of a Probabilistic Polynomial Time-bounder (PPT) adversary $\mathcal{A}$ to successfully distinguish the trapdoor for a PEKS scheme within a polynomial time $t$ is  $\mbox{\textbf{Adv}}^{T^{*}-ind}_{\mathcal{A}_{i}}(t) = |\mbox{\textbf{Pr}}[b^{'}=b]-\frac{1}{2}|$. A PEKS scheme satisfies the trapdoor indistinguishability in a Chosen Plaintext Attack (CPA)/Chosen Ciphertext Attack (CCA)  model if for any PPT $\mathcal{A}$,
+$\mbox{\textbf{Adv}}^{T^{*}-ind}_{\mathcal{A}}(t)\leq\epsilon$, where $\epsilon$ is a negligible function~\cite{ma2020certificateless}.
+
+\subsection{Ciphertext Indistinguishability}
+ Ciphertext indistinguishability is another essential security attribute of PEKS scheme. It ensures that a PPT adversary cannot distinguish between two sets of plaintext messages encrypted under the same public key. This property is important for maintaining the confidentiality of the encrypted data and preventing attackers from obtaining information by parsing the ciphertext. We define the advantages of a PPT $\mathcal{A}$ to successfully distinguish the ciphertext of two separate keywords for a PEKS scheme within polynomial time $t$ as $\mbox{\textbf{Adv}}^{C^{*}-ind}_{\mathcal{A}}(t) = |\mbox{\textbf{Pr}}[b^{'}=b]-\frac{1}{2}|$. A PEKS scheme satisfies ciphertext indistinguishability against a CPA/CCA model if for any PPT $\mathcal{A}$,
+ $\mbox{\textbf{Adv}}^{C^{*}-ind}_{\mathcal{A}_{2}}(t)\leq\epsilon$.
+
+\subsection{Designated Tester} 
+ Designated testability means only the designated tester (server) can run the Test algorithm for PEKS scheme. To obtain the designated testability, the private key of the tester is required to run the Test algorithm. Therefore, only a pre-selected tester can run this algorithm. We define the advantages of a PPT $\mathcal{A}$ to successfully breaking the designated testability within polynomial time $t$ is $\mbox{\textbf{Adv}}^{D^{*}-ind}_{\mathcal{A}}(t) = |\mbox{\textbf{Pr}}[b^{'}=b]-\frac{1}{2}|$. A PEKS scheme satisfies designated testability against the CPA/CCA model if for any PPT $\mathcal{A}$, $\mbox{\textbf{Adv}}^{D^{*}}_{\mathcal{A}_{i}}(t)\leq\epsilon$.
+ 
+ \subsection{Forward Security}
+ Cloud storage systems can add data files, potentially leaking sensitive information. Forward security is necessary in PEKS schemes to prevent search tokens from searching encrypted files after generating periods. For example, a search token issued at time $t$ cannot search another encrypted data file generated at time $t'$, where $t'\geq t$.
+ 
+ \subsection{The 0-Encoding and 1-Encoding}
+ Lin et al. \cite{lin2005efficient} suggest the 0-Encoding and 1-Encoding techniques for solving the Millionaires' Problem (MP). Let, $s = s_n + s_{n-1} + \cdots + s_1 \in \{0,1\}^{n}$ represents a binary string of length $n$. The 0-encoding of $s$ is denoted as $S^0_s$, where $S^0_s = \{s_n, s_{n-1}, \cdots, s_{i+1}|s_{i} = 0, 1\leq i \leq n \}$.  The 1-encoding of $s$ is denotes as $S^1_{s}$ , where $S^1_{s} = \{s_n, s_{n-1}, \cdots, s_{i}|s_{i} = 1, 1\leq i \leq n\}$. Both $S^0_s$ and $S^1_s$ have atmost $n$ elements. If we encode $x$ using 1-encoding $S^1_x$, and encode $y$ using 0-encoding $S^0_y$, them we can say $x > y$ if $S^1_x$ and $S^0_y$ has common element \cite{lin2005efficient}.
+
+\section{Summary}
+ \label{chp2.6}This chapter provides an in-depth literature review on PKI-based, IBE-based, and CL-PKC-based PEKS schemes. This chapter also describes the essential security attributes to justify the attack-resilience of the PEKS schemes against a PPT adversary.
