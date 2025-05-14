@@ -6,7 +6,7 @@ Semproj.pdf:  Executive_MTech_Thesis_IIIT\ Kalyani.tex
 	latexmk -pdf -jobname=Semproj Executive_MTech_Thesis_IIIT\ Kalyani.tex
 
 watch: 
-	latexmk -pvc -pdf Semproj.tex
+	latexmk -pvc -pdf Executive_MTech_Thesis_IIIT\ Kalyani.tex
 
 clean: 
 	latexmk -C 
